@@ -2,11 +2,12 @@ package com.jcdecaux.recruiting.developpers.domain.model;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-import javax.validation.Valid;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,30 +16,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-11-27T21:07:20.470+01:00")
 
+@Entity
+@Table(name = "DEVELOPPEUR")
 public class Developpeur   {
+	
   @JsonProperty("id")
-  private Long id = null;
+  @Column(name = "id")
+  @Id
+  private Long id;
 
   @JsonProperty("username")
+  @Column(name = "username")
   private String username = null;
 
+  @Column(name = "firstName")
   @JsonProperty("firstName")
   private String firstName = null;
 
+  @Column(name = "lastName")
   @JsonProperty("lastName")
   private String lastName = null;
 
+  @Column(name = "email")
   @JsonProperty("email")
   private String email = null;
 
+  @Column(name = "password")
   @JsonProperty("password")
   private String password = null;
 
+  @Column(name = "phone")
   @JsonProperty("phone")
   private String phone = null;
-
-  @JsonProperty("langages")
-  private List<Langage> langages = null;
 
   @JsonProperty("userStatus")
   private Integer userStatus = null;
@@ -183,34 +192,6 @@ public class Developpeur   {
     this.phone = phone;
   }
 
-  public Developpeur langages(List<Langage> langages) {
-    this.langages = langages;
-    return this;
-  }
-
-  public Developpeur addLangagesItem(Langage langagesItem) {
-    if (this.langages == null) {
-      this.langages = new ArrayList<Langage>();
-    }
-    this.langages.add(langagesItem);
-    return this;
-  }
-
-   /**
-   * Get langages
-   * @return langages
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public List<Langage> getLangages() {
-    return langages;
-  }
-
-  public void setLangages(List<Langage> langages) {
-    this.langages = langages;
-  }
 
   public Developpeur userStatus(Integer userStatus) {
     this.userStatus = userStatus;
@@ -249,13 +230,12 @@ public class Developpeur   {
         Objects.equals(this.email, developpeur.email) &&
         Objects.equals(this.password, developpeur.password) &&
         Objects.equals(this.phone, developpeur.phone) &&
-        Objects.equals(this.langages, developpeur.langages) &&
         Objects.equals(this.userStatus, developpeur.userStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, firstName, lastName, email, password, phone, langages, userStatus);
+    return Objects.hash(id, username, firstName, lastName, email, password, phone, userStatus);
   }
 
   @Override
@@ -270,7 +250,6 @@ public class Developpeur   {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
-    sb.append("    langages: ").append(toIndentedString(langages)).append("\n");
     sb.append("    userStatus: ").append(toIndentedString(userStatus)).append("\n");
     sb.append("}");
     return sb.toString();

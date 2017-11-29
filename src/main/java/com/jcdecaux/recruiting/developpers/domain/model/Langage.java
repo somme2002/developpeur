@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
@@ -33,26 +35,21 @@ public class Langage {
   @JsonProperty("id")
   @Id
   @Column(name = "id")
-  private Long id = null;
+  private Long id;
 
   @JsonProperty("name")
   @Column(name = "name")
   private String name = null;
   
-  @JsonProperty("developpeurs")
-
-  //@ManyToMany
-  //@JoinTable(name="lang_dev",joinColumns=@JoinColumn(name="langage_id"),inverseJoinColumns=@JoinColumn(name="dev_id"))
-  
+  @JsonIgnore
+  @ManyToMany(cascade = CascadeType.ALL)
+  @JoinTable(name="lang_dev",joinColumns=@JoinColumn(name="langage_id"),inverseJoinColumns=@JoinColumn(name="dev_id"))
   private Set<Developpeur> developpeurs;
 
   public Set<Developpeur> getDeveloppeurs() {
 	return developpeurs;
   }
 
-  public void setDeveloppeurs(Set<Developpeur> developpeurs) {
-	this.developpeurs = developpeurs;
-  }
 
 /**
    * Langage Status

@@ -22,13 +22,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.jcdecaux.recruiting.developpers.domain.model.Developpeur;
 import com.jcdecaux.recruiting.developpers.domain.model.Langage;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-11-27T21:07:20.470+01:00")
 
 @Api(value = "langage", description = "the langage API")
 public interface LangageApi {
 
-    @ApiOperation(value = "Create Langage", notes = "This can only be done by the logged in Langage.", response = Void.class, tags={ "langage", })
+    @ApiOperation(value = "Create Langage", notes = "créer des langages de programmation.", response = Void.class, tags={ "langage", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Void.class) })
     
@@ -41,7 +42,7 @@ public interface LangageApi {
     }
 
 
-    @ApiOperation(value = "Creates list of Langages with given input array", notes = "", response = Void.class, tags={ "langage", })
+    @ApiOperation(value = "créer des langages de programmation with given input array", notes = "", response = Void.class, tags={ "langage", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Void.class) })
     
@@ -107,6 +108,31 @@ public interface LangageApi {
     default ResponseEntity<Void> updateLangage(@ApiParam(value = "name that need to be updated",required=true ) @PathVariable("name") String name,@ApiParam(value = "Updated Langage object" ,required=true )  @Valid @RequestBody Langage body) {
         // do some magic!
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+    
+    @ApiOperation(value = "Associer un langage de programmation à un développeur,", notes = "", response = Void.class, tags={ "langage", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "successful operation", response = Void.class) })
+    
+    @RequestMapping(value = "/attributelangage2developpeur/{langageName}/{userName}",
+        produces = { "application/xml", "application/json" }, 
+        method = RequestMethod.POST)
+    default ResponseEntity<Void> putLangageToDeveloppeur(@ApiParam(value = "The name that needs to be fetched. Use Langage for testing. ",required=true ) @PathVariable("langageName") String langageName,@ApiParam(value = "The name that needs to be fetched. Use Developpeur for testing. ",required=true ) @PathVariable("userName") String userName) {
+        // do some magic!
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+    
+    @ApiOperation(value = "Lister les développeurs ayant comme compétence un langage de prorammation en particulier", notes = "", response = Void.class, tags={ "langage", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "successful operation", response = Void.class),
+        @ApiResponse(code = 404, message = "Developpeurs not found", response = Void.class)})
+    
+    @RequestMapping(value = "/langage/developpeur/{langName}",
+        produces = { "application/xml", "application/json" }, 
+        method = RequestMethod.GET)
+    default ResponseEntity<List<Developpeur>> getDeveloppeursByLang(@ApiParam(value = "The name that needs to be fetched. Use Langage for testing. ",required=true ) @PathVariable("langName") String langageName) {
+        // do some magic!
+        return new ResponseEntity<List<Developpeur>>(HttpStatus.OK);
     }
 
 }

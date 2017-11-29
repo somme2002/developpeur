@@ -48,7 +48,7 @@ databaseChangeLog:
   - changeSet:
       id: 4
       author: ecoquelin
-      comment : "Insert starting version"
+      comment : "Insert starting LANGAGE"
       changes:
         - insert:
             tableName: langage
@@ -62,3 +62,155 @@ databaseChangeLog:
               - column:
                   name: status
                   value: "ACTIVE"
+        - insert:
+            tableName: langage
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: "javascript"
+              - column:
+                  name: status
+                  value: "ACTIVE"      
+  - changeSet:
+      id: 5
+      author: ecoquelin
+      comment : "Creates table DEVELOPPEUR"
+      changes:
+        - createTable:
+            tableName: developpeur
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar
+              - column:
+                  name: first_name
+                  type: varchar        
+              - column:
+                  name: last_name
+                  type: varchar
+              - column:
+                  name: email
+                  type: varchar    
+              - column:
+                  name: password
+                  type: varchar
+              - column:
+                  name: phone
+                  type: varchar
+              - column:
+                  name: user_status
+                  type: int                              
+  - changeSet:
+      id: 6
+      author: ecoquelin
+      comment : "Insert starting developpeur"
+      changes:
+        - insert:
+            tableName: developpeur
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: username
+                  value: "lima"
+              - column:
+                  name: first_name
+                  value: "li"        
+              - column:
+                  name: last_name
+                  value: "ma"
+              - column:
+                  name: email
+                  value: "marcchine@gmail.com"    
+              - column:
+                  name: password
+                  value: "rest"
+              - column:
+                  name: phone
+                  value: "0641710000"
+              - column:
+                  name: user_status
+                  value: 2
+        - insert:
+            tableName: developpeur
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: username
+                  value: "lima2"
+              - column:
+                  name: first_name
+                  value: "li2"        
+              - column:
+                  name: last_name
+                  value: "ma2"
+              - column:
+                  name: email
+                  value: "marcchine2@gmail.com"    
+              - column:
+                  name: password
+                  value: "rest"
+              - column:
+                  name: phone
+                  value: "0641710700"
+              - column:
+                  name: user_status
+                  value: 1                                               
+  - changeSet:
+      id: 7
+      author: ecoquelin
+      comment : "Creates table LANG_DEV"
+      changes:
+        - createTable:
+            tableName: lang_dev
+            columns:
+              - column:
+                  name: langage_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_lang_dev_langageid
+                    references: langage(id)
+                    nullable: false
+              - column:
+                  name: dev_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_lang_dev_devid
+                    references: developpeur(id)
+                    nullable: false           
+  - changeSet:
+      id: 8
+      author: ecoquelin
+      comment : "Insert starting LANG_DEV"
+      changes:
+        - insert:
+            tableName: lang_dev
+            columns:
+              - column:
+                  name: langage_id
+                  value: 1
+              - column:
+                  name: dev_id
+                  value: 1
+        - insert:
+            tableName: lang_dev     
+            columns:
+              - column:
+                  name: langage_id
+                  value: 1
+              - column:
+                  name: dev_id
+                  value: 2      
+                             

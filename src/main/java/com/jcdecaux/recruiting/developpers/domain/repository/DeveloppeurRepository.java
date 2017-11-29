@@ -6,7 +6,8 @@ import com.jcdecaux.recruiting.developpers.domain.model.Developpeur;
 
 public interface DeveloppeurRepository extends JpaRepository<Developpeur, String>{
 
-	
+	Developpeur findByUsername(String username);
+
 }
 
 

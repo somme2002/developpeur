@@ -27,7 +27,7 @@ import com.jcdecaux.recruiting.developpers.domain.model.Developpeur;
 @Api(value = "developpeur", description = "the developpeur API")
 public interface DeveloppeurApi {
 
-    @ApiOperation(value = "Creates list of developpeurs with given input array", notes = "", response = Void.class, tags={ "developpeur", })
+    @ApiOperation(value = "créer des développeurs avec given input array", notes = "", response = Void.class, tags={ "developpeur", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Void.class) })
     
@@ -40,7 +40,7 @@ public interface DeveloppeurApi {
     }
 
 
-    @ApiOperation(value = "Creates list of developpeur with given input array", notes = "", response = Void.class, tags={ "developpeur", })
+    @ApiOperation(value = "créer des développeurs", notes = "", response = Void.class, tags={ "developpeur", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Void.class) })
     
@@ -92,14 +92,11 @@ public interface DeveloppeurApi {
         produces = { "application/xml", "application/json" }, 
         method = RequestMethod.GET)
     default ResponseEntity<Developpeur> getUserByName(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true ) @PathVariable("username") String username) {
-        // do some magic!
-    	Developpeur developpeur = new Developpeur();
-    	developpeur.setId(2L);
-        return new ResponseEntity<Developpeur>(developpeur, HttpStatus.OK);
+        return new ResponseEntity<Developpeur>(HttpStatus.OK);
     }
 
 
-    @ApiOperation(value = "Updated user", notes = "This can only be done by the logged in user.", response = Void.class, tags={ "developpeur", })
+    @ApiOperation(value = "Modifier les informations d'un développeurr", notes = "Modifier les informations d'un développeur.", response = Void.class, tags={ "developpeur", })
     @ApiResponses(value = { 
         @ApiResponse(code = 400, message = "Invalid user supplied", response = Void.class),
         @ApiResponse(code = 404, message = "Developpeur not found", response = Void.class) })

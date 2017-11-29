@@ -1,4 +1,4 @@
-package com.jcdecaux.recruiting.developpers.service.rest.impl;
+package com.jcdecaux.recruiting.developpers.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

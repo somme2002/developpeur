@@ -6,9 +6,9 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.7.RELEASE</version>
 	</parent>
-	<groupId>com.jcdecaux.recruiting</groupId>
-	<artifactId>developpers</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>com.li.recruiting</groupId>
+	<artifactId>developper</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<properties>
         <java.version>1.8</java.version>
